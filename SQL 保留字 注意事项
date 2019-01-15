@@ -1,0 +1,17 @@
+IN //操作符允许我们在 WHERE 子句中规定多个值。  select * from emp where empno in(123,345,800)  800为字段。
+
+LIKE  //select ename,sal from emp where ename like 's%' 。'%s'以s结尾；%lom%其中带有lom的；not like是不像；__p%第三个字符是p的。
+
+is null //select * from emp where mgr is null，mgr字段是null的结果。
+
+select * from emp where (sal>500 or job='manager') and ename like 'J%'  //其中关于and or 的使用。
+
+order by  //select sal from emp order by sal asc;  asc 默认是升序排列,desc 为降序排列。 select deptno,sal from emp order by deptno,sal desc
+
+select name from student where num=(select MIN(num) from student); //后面的num相当于赋值，因此不能省略。
+
+select name"姓名" from student where num>(select AVG(num)from student) order by num ; //注意avg,sum,min,max.....都是和整个表格配合使用的，不能
+单独去使用。
+
+select ename" 姓名",job" 岗位",sal" 工资",(select avg(sal) from emp)" 平均工资" fromemp where sal>(select avg(sal) from emp) order by sal
+关于select后面的字段是可以随便添加的。
